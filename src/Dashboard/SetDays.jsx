@@ -50,15 +50,7 @@ const SetDays = ({ updateDays }) => {
     { name: "معمل الذكاء الاصطناعي", value: "LabAI" },
   ];
 
-  const handelSave = () => {
-    for (const key in data) {
-      if (data[key] === "" || data[key] === 0) {
-        alert("Please fill all fields");
-        return;
-      }
-    }
-    setAllData([...AllData, data]);
-  };
+ 
 
   return (
     <div>
@@ -66,133 +58,118 @@ const SetDays = ({ updateDays }) => {
         <h2 className="text-xl font-semibold text-center mb-6">إعداد الأيام</h2>
         <div className="grid grid-cols-2 gap-4">
           {/* Day Selection */}
-          <select
-            onChange={(e) => setData({ ...data, day: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          >
-            <option selected disabled>
-              اختر اليوم
-            </option>
-            {daysOptions.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
+          <label className="block">
+            اختر اليوم
+            <select
+              onChange={(e) => setData({ ...data, day: e.target.value })}
+              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            >
+              <option selected disabled>
+                اختر اليوم
               </option>
-            ))}
-          </select>
+              {daysOptions.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
           {/* Type Selection */}
-          <select
-            onChange={(e) => setData({ ...data, type: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          >
-            <option selected disabled>
-              اختر النوع
-            </option>
-            {typeOptions.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
+          <label className="block">
+            اختر النوع
+            <select
+              onChange={(e) => setData({ ...data, type: e.target.value })}
+              className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            >
+              <option selected disabled>
+                اختر النوع
               </option>
-            ))}
-          </select>
+              {typeOptions.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
           {/* Group Input */}
-          <input
-            type="text"
-            placeholder="المجموعة"
-            onChange={(e) => setData({ ...data, group: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          />
+          <label className="block">
+            المجموعة
+            <input
+              type="text"
+              placeholder="المجموعة"
+              onChange={(e) => setData({ ...data, group: e.target.value })}
+              className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            />
+          </label>
 
           {/* Subject Input */}
-          <input
-            type="text"
-            placeholder="المادة"
-            onChange={(e) => setData({ ...data, subject: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          />
+          <label className="block">
+            المادة
+            <input
+              type="text"
+              placeholder="المادة"
+              onChange={(e) => setData({ ...data, subject: e.target.value })}
+              className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            />
+          </label>
 
           {/* Doctor Input */}
-          <input
-            type="text"
-            placeholder="الدكتور"
-            onChange={(e) => setData({ ...data, doctor: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          />
+          <label className="block">
+            الدكتور
+            <input
+              type="text"
+              placeholder="الدكتور"
+              onChange={(e) => setData({ ...data, doctor: e.target.value })}
+              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            />
+          </label>
 
           {/* Hall Selection */}
-          <select
-            onChange={(e) => setData({ ...data, hall: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          >
-            <option selected disabled>
-              اختر القاعة / المعمل
-            </option>
-            {hallOptions.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
+          <label className="block">
+            اختر القاعة / المعمل
+            <select
+              onChange={(e) => setData({ ...data, hall: e.target.value })}
+              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            >
+              <option selected disabled>
+                اختر القاعة / المعمل
               </option>
-            ))}
-          </select>
+              {hallOptions.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-          {/* Doctor Input */}
-          <input
-            type="text"
-            placeholder="من الساعة"
-            onChange={(e) => setData({ ...data, start: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          />
-          <input
-            type="text"
-            placeholder="الى الساعة"
-            onChange={(e) => setData({ ...data, end: e.target.value })}
-            className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-          />
+          {/* Start Input */}
+          <label className="block">
+            من الساعة
+            <input
+              type="text"
+              placeholder="من الساعة"
+              onChange={(e) => setData({ ...data, start: e.target.value })}
+              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            />
+          </label>
+
+          {/* End Input */}
+          <label className="block">
+            الى الساعة
+            <input
+              type="text"
+              placeholder="الى الساعة"
+              onChange={(e) => setData({ ...data, end: e.target.value })}
+              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+            />
+          </label>
 
           {/* Save Button */}
-          <div className="col-span-2">
-            <button
-              onClick={handelSave}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
-            >
-              حفظ
-            </button>
-          </div>
+          
         </div>
-      </div>
-      <div className="flex flex-col space-y-2 mx-32 mt-9">
-        {AllData.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-md rounded-lg p-4 border border-gray-300 flex justify-between"
-          >
-            <p className="text-gray-700">
-              <span className="font-bold">المادة:</span> {item.subject}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">اليوم:</span> {item.day}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">النوع:</span> {item.type}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">المجموعة:</span> {item.group}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">الدكتور:</span> {item.doctor}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">القاعة:</span> {item.hall}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">الوقت </span> {item.start}
-              <span className="font-bold">: </span> {item.end}
-            </p>
-            <p className="text-gray-700">
-              <span className="font-bold">delet</span>
-            </p>
-          </div>
-        ))}
-      </div>
+      </div>   
     </div>
   );
 };

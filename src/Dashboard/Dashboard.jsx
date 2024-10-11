@@ -10,13 +10,31 @@ const Dashboard = () => {
     setLevelData(newData);
   };
   const updateDaysData = (newData) => {
-    setLevelData(newData);
+    setDayData(newData);
   };
 
+  const handelSave = () => {
+    for (const key in DayData) {
+      if (DayData[key] === "" || DayData[key] === 0) {
+        alert("Please fill all fields");
+        return;
+      }
+    }
+    
+  };
   return (
     <div>
       <Level updateLevel={updateLevelData} />
       <SetDays updateDays={updateDaysData} />
+
+      <div className="col-span-2">
+        <button
+          onClick={handelSave}
+          className="bg-blue-600   hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
+        >
+          حفظ
+        </button>
+      </div>
     </div>
   );
 };
