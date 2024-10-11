@@ -50,7 +50,7 @@ const Table = () => {
         {
           Name: "رياضيات 22",
           Group: "أ",
-          Type: "lecture",
+          Type: "lect ure",
           Doctor: "د. سميث",
           Hole: "قاعة 101",
           Start: 7,
@@ -85,22 +85,13 @@ const Table = () => {
       day: "الاثنين",
       course: [
         {
-          Name: "رياضيات 101",
-          Group: "أ",
-          Type: "lecture",
-          Doctor: "د. ألين",
-          Hole: "قاعة 102",
-          Start: 1,
-          End: 3,
-        },
-        {
           Name: "إحصاء 201",
           Group: "ج",
           Type: "lecture",
           Doctor: "د. محمد",
           Hole: "قاعة 204",
-          Start: 4,
-          End: 6,
+          Start: 1,
+          End: 3,
         },
         {
           Name: "إحصاء 201",
@@ -125,24 +116,6 @@ const Table = () => {
     {
       day: "الثلاثاء",
       course: [
-        {
-          Name: "علوم الحاسوب",
-          Group: "أ",
-          Type: "lecture",
-          Doctor: "د. ليلى",
-          Hole: "قاعة 105",
-          Start: 2,
-          End: 4,
-        },
-        {
-          Name: "كيمياء 102",
-          Group: "ب",
-          Type: "معمل",
-          Doctor: "د. مروان",
-          Hole: "معمل 2",
-          Start: 5,
-          End: 7,
-        },
         {
           Name: "علوم الحاسوب",
           Group: "أ",
@@ -273,9 +246,7 @@ const Table = () => {
 
       {/* Days and Courses */}
       {Day.map((item, i) => (
-        <div key={i} className="grid grid-cols-10  min-h-24 border-t-2">
-          {/* Day Name */}
-          {/* {console.log(rowSpanClac(item))} */}
+        <div key={i} className="grid grid-cols-10     min-h-24 border-t-2">
           <div
             className={`border-t-2 row-span-${rowSpanClac(item) + 1}            
              text-center ${
@@ -292,22 +263,28 @@ const Table = () => {
             {item.day}
           </div>
 
-          {/* Grid with empty cells and course spans */}
           {item.course.map((course, idx) => {
-            const colSpan = course.End - course.Start; // Calculate span based on start and end
-
+            const colSpan = course.End - course.Start;
             return (
               <div
                 key={idx}
-                className={`py-3 text-center border-[1px] rounded-sm bg-[#fcabab] col-span-${colSpan}`}
+                className={`py-3 text-center border-[1px] rounded-sm 
+                    hover:scale-105 transition-all duration-500
+                     bg-[#fcabab99] hover:bg-[#fcabab] col-span-${colSpan}
+                        ${
+                          course.Type == "lecture"
+                            ? "bg-[#fcabab99]"
+                            : "bg-[#7a84f999]"
+                        }
+                    `}
                 style={{
-                  gridColumnStart: course.Start + 1, // Shift by 1 to account for day column
+                  gridColumnStart: course.Start + 1,
                   gridColumnEnd: `span ${colSpan}`,
                 }}
               >
                 <div className="font-bold">{course.Name}</div>
                 <div>
-                  {"مجموعة :" + course.Group} {" - "} {course.Doctor}{" "}
+                  {"مجموعة " + course.Group} {" - "} {course.Doctor}{" "}
                   {course.Hole}
                 </div>
               </div>
