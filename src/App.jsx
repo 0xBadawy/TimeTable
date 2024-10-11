@@ -1,10 +1,14 @@
-import React from 'react'
-import Table from './Table';
+import React from "react";
+import Table from "./Table";
+import Dashboard from "./Dashboard/Dashboard";
 
 const App = () => {
-  return <div>
-    <Table />
-  </div>;
-}
+  return (
+    <div style={{ direction: "rtl" }}>
+      {/* <Table /> */}
+      <Dashboard />
+    </div>
+  );
+};
 
-export default App
+export default App;
