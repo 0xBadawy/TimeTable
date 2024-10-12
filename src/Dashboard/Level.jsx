@@ -31,9 +31,9 @@ const Level = ({ updateLevel }) => {
       name: "المستوى الثالث",
       value: "level3",
       department: [
-        { id: 2, name: "نظم المعلومات", value: "is" },
+        { id: 1, name: "نظم المعلومات", value: "is" },
         { id: 2, name: "علوم الحاسب", value: "cs" },
-        { id: 2, name: "تكنولوجيا المعلومات", value: "it" },
+        { id: 3, name: "تكنولوجيا المعلومات", value: "it" },
       ],
     },
     {
@@ -41,9 +41,9 @@ const Level = ({ updateLevel }) => {
       name: "المستوى الرابع",
       value: "level4",
       department: [
-        { id: 2, name: "نظم المعلومات", value: "is" },
+        { id: 1, name: "نظم المعلومات", value: "is" },
         { id: 2, name: "علوم الحاسب", value: "cs" },
-        { id: 2, name: "تكنولوجيا المعلومات", value: "it" },
+        { id: 3, name: "تكنولوجيا المعلومات", value: "it" },
       ],
     },
   ]);
