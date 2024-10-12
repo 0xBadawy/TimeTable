@@ -20,17 +20,18 @@ const Dashboard = () => {
         return;
       }
     }
-    
+    console.log(LevelData);
+    console.log(DayData);
   };
   return (
     <div>
       <Level updateLevel={updateLevelData} />
       <SetDays updateDays={updateDaysData} />
 
-      <div className="col-span-2">
+      <div className="grid grid-cols-2 w-[500px] mx-auto mt-10">
         <button
           onClick={handelSave}
-          className="bg-blue-600   hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
+          className="bg-blue-600 col-span-2   hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
         >
           حفظ
         </button>
