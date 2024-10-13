@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "./Firebase";
 import Level from "./../Dashboard/Level";
 
@@ -63,5 +69,28 @@ export const useFirebase = () => {
     }
   };
 
-  return { LoadData, items, addItem };
+  const deleteItemById = async (id, parent) => {
+    try {
+      if (!parent) {
+        throw new Error(
+          "Parent document ID is required to delete from the sub-collection."
+        );
+      }
+
+      // Create a document reference
+      const itemDocRef = doc(
+        db,
+        `items/${parent.level}/${parent.department}`,
+        id
+      );
+
+      // Delete the document using the reference
+      await deleteDoc(itemDocRef);
+      console.log("Item deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting item: ", error);
+    }
+  };
+
+  return { LoadData, items, addItem, deleteItemById };
 };

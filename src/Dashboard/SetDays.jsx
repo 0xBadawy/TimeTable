@@ -46,17 +46,66 @@ const SetDays = ({ updateDays }) => {
     { name: "معمل 1A", value: "Lab1A" },
     { name: "معمل 1B", value: "Lab1B" },
     { name: "معمل 2", value: "Lab2" },
+    { name: "معمل الفيزياء", value: "Lab5" },
+    { name: "معمل الأليكترونيات", value: "Lab6" },
     { name: "معمل الشبكات", value: "Lab3" },
     { name: "معمل الذكاء الاصطناعي", value: "LabAI" },
   ];
 
- 
+  const handelFromTime = (e) => {
+    let start = parseInt(e.target.value, 10);
+    if (start < 8) start += 12;
+    setData({ ...data, start: start - 8 });
+  };
 
+  const handelToTime = (e) => {
+    let end = parseInt(e.target.value, 10);
+    if (end < 8) end += 12;
+    setData({ ...data, end: end - 8 });
+  };
   return (
     <div>
-      <div className="bg-white shadow-md rounded-lg p-6 w-[900px] mx-auto mt-10">
+      <div className="bg-white shadow-md rounded-lg p-6 w-[1200px] mx-auto mt-10">
         <h2 className="text-xl font-semibold text-center mb-6">إعداد الأيام</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-5 gap-4">
+          {/* Subject Input */}
+          <div className="col-span-2">
+            <label className="block">
+              المادة
+              <input
+                type="text"
+                placeholder="المادة"
+                onChange={(e) => setData({ ...data, subject: e.target.value })}
+                className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+              />
+            </label>
+          </div>
+          {/* Group Input */}
+          <div className="">
+            <label className="block">
+              المجموعة
+              <input
+                type="text"
+                placeholder="المجموعة"
+                onChange={(e) => setData({ ...data, group: e.target.value })}
+                className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+              />
+            </label>
+          </div>
+
+          {/* Doctor Input */}
+          <div className="col-span-2">
+            <label className="block">
+              الدكتور
+              <input
+                type="text"
+                placeholder="الدكتور"
+                onChange={(e) => setData({ ...data, doctor: e.target.value })}
+                className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+              />
+            </label>
+          </div>
+
           {/* Day Selection */}
           <label className="block">
             اختر اليوم
@@ -68,7 +117,7 @@ const SetDays = ({ updateDays }) => {
                 اختر اليوم
               </option>
               {daysOptions.map((item) => (
-                <option key={item.value} value={item.value}>
+                <option key={item.name} value={item.name}>
                   {item.name}
                 </option>
               ))}
@@ -86,44 +135,11 @@ const SetDays = ({ updateDays }) => {
                 اختر النوع
               </option>
               {typeOptions.map((item) => (
-                <option key={item.value} value={item.value}>
+                <option key={item.value} value={item.name}>
                   {item.name}
                 </option>
               ))}
             </select>
-          </label>
-
-          {/* Group Input */}
-          <label className="block">
-            المجموعة
-            <input
-              type="text"
-              placeholder="المجموعة"
-              onChange={(e) => setData({ ...data, group: e.target.value })}
-              className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-            />
-          </label>
-
-          {/* Subject Input */}
-          <label className="block">
-            المادة
-            <input
-              type="text"
-              placeholder="المادة"
-              onChange={(e) => setData({ ...data, subject: e.target.value })}
-              className="bg-gray-100 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-            />
-          </label>
-
-          {/* Doctor Input */}
-          <label className="block">
-            الدكتور
-            <input
-              type="text"
-              placeholder="الدكتور"
-              onChange={(e) => setData({ ...data, doctor: e.target.value })}
-              className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-            />
           </label>
 
           {/* Hall Selection */}
@@ -137,7 +153,7 @@ const SetDays = ({ updateDays }) => {
                 اختر القاعة / المعمل
               </option>
               {hallOptions.map((item) => (
-                <option key={item.value} value={item.value}>
+                <option key={item.value} value={item.name}>
                   {item.name}
                 </option>
               ))}
@@ -150,7 +166,7 @@ const SetDays = ({ updateDays }) => {
             <input
               type="text"
               placeholder="من الساعة"
-              onChange={(e) => setData({ ...data, start: e.target.value })}
+              onChange={handelFromTime}
               className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
             />
           </label>
@@ -161,15 +177,14 @@ const SetDays = ({ updateDays }) => {
             <input
               type="text"
               placeholder="الى الساعة"
-              onChange={(e) => setData({ ...data, end: e.target.value })}
+              onChange={handelToTime}
               className="bg-gray-100 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
             />
           </label>
 
           {/* Save Button */}
-          
         </div>
-      </div>   
+      </div>
     </div>
   );
 };

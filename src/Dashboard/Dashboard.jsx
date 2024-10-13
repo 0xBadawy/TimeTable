@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Level from "./Level";
 import SetDays from "./SetDays";
 import { useFirebase } from "../Firebase/useFirebase";
@@ -17,6 +17,12 @@ const Dashboard = () => {
     setDayData(newData);
   };
 
+  useEffect(() => {
+    if (LevelData.level && LevelData.department) {
+      handelLoad();
+    }
+  }, [LevelData]);
+
   const handelSave = () => {
     for (const key in DayData) {
       if (DayData[key] === "" || DayData[key] === 0) {
@@ -26,6 +32,7 @@ const Dashboard = () => {
     }
     addItem(DayData, LevelData);
     toast.success("تم الحفظ بنجاح");
+    handelLoad();
   };
 
   const handelLoad = () => {
@@ -46,17 +53,17 @@ const Dashboard = () => {
           حفظ
         </button>
       </div>
-      <div className="grid grid-cols-2 w-[500px] mx-auto mt-10">
+      {/* <div className="grid grid-cols-2 w-[500px] mx-auto mt-10">
         <button
           onClick={handelLoad}
           className="bg-blue-600 col-span-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
         >
           Load Data
         </button>
-      </div>
+      </div> */}
 
       {/* DataGrid can be displayed to show the updated items */}
-      <DataGrid AllData={items} />
+      <DataGrid AllData={items} ParantData={LevelData} />
 
       <Toaster position="top-center" reverseOrder={false} />
     </div>

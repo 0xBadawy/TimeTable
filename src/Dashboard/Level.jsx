@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Level = ({ updateLevel }) => {
+const Level = ({ updateLevel, dataChanged }) => {
   const [Data, setData] = useState({ level: "", department: "" });
 
   const updateLevelData = (newData) => {
@@ -73,7 +73,7 @@ const Level = ({ updateLevel }) => {
           }}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-52"
         >
-          <option value="">القسم</option>{" "}
+          <option>القسم</option>{" "}
           {level.map(
             (item) =>
               item.value === Data.level &&
