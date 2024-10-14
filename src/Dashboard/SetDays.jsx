@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const SetDays = ({ updateDays }) => {
+
   const [data, setData] = useState({
     day: "",
     type: "",
@@ -31,12 +32,10 @@ const SetDays = ({ updateDays }) => {
     { name: "الأربعاء", value: "wednesday" },
     { name: "الخميس", value: "thursday" },
   ];
-
   const typeOptions = [
     { name: "محاضرة", value: "lecture" },
     { name: "سكشن", value: "section" },
   ];
-
   const hallOptions = [
     { name: "قاعة 1", value: "hall1" },
     { name: "قاعة 2", value: "hall2" },
@@ -51,18 +50,18 @@ const SetDays = ({ updateDays }) => {
     { name: "معمل الشبكات", value: "Lab3" },
     { name: "معمل الذكاء الاصطناعي", value: "LabAI" },
   ];
-
   const handelFromTime = (e) => {
     let start = parseInt(e.target.value, 10);
     if (start < 8) start += 12;
     setData({ ...data, start: start - 8 });
   };
-
   const handelToTime = (e) => {
     let end = parseInt(e.target.value, 10);
     if (end < 8) end += 12;
     setData({ ...data, end: end - 8 });
   };
+
+
   return (
     <div>
       <div className="bg-white shadow-md rounded-lg p-6 w-[1200px] mx-auto mt-10">

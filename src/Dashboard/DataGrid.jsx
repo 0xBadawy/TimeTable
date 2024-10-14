@@ -7,7 +7,6 @@ const DataGrid = (props) => {
 
   const { deleteItemById } = useFirebase();
 
-  // Sort the data by the day of the week
   const sortedData = data.sort((a, b) => {
     const daysOfWeek = [
       "الأحد",
@@ -62,7 +61,7 @@ const DataGrid = (props) => {
               key={index}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
-              <td className="pr-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td className="pr-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
                 {index + 1}
               </td>
               <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -72,7 +71,8 @@ const DataGrid = (props) => {
               <td className="px-6 py-4">{item.doctor}</td>
               <td className="px-6 py-4">{item.hall}</td>
               <td className="px-6 py-4">
-                {item.start} - {item.end}
+                {item.start + 8 > 12 ? item.start + 8 - 12 : item.start + 8} -{" "}
+                {item.end + 8 > 12 ? item.end + 8 - 12 : item.end + 8}
               </td>
               <td className="px-6 py-4 text-right">
                 <button

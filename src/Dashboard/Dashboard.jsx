@@ -53,18 +53,8 @@ const Dashboard = () => {
           حفظ
         </button>
       </div>
-      {/* <div className="grid grid-cols-2 w-[500px] mx-auto mt-10">
-        <button
-          onClick={handelLoad}
-          className="bg-blue-600 col-span-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-200 ease-in-out"
-        >
-          Load Data
-        </button>
-      </div> */}
 
-      {/* DataGrid can be displayed to show the updated items */}
       <DataGrid AllData={items} ParantData={LevelData} />
-
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   );

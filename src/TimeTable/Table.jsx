@@ -22,26 +22,21 @@ const Table = () => {
   };
 
   const handelLoad = () => {
-    // Reset the timetable before loading new data
     setDay(defaultDay);
-    // Load data from Firebase based on level and department
     LoadData(LevelData.level, LevelData.department);
-    console.log(items);
   };
 
   useEffect(() => {
     if (LevelData.level && LevelData.department) {
-      // Load data from Firebase based on level and department
       LoadData(LevelData.level, LevelData.department);
     }
   }, [LevelData]);
 
   useEffect(() => {
     if (items.length > 0) {
-      // Populate the timetable after items are updated
       LoadToTimeTable();
     }
-  }, [items]); // Trigger LoadToTimeTable when 'items' change
+  }, [items]);
 
   const LoadToTimeTable = () => {
     setDay((prevDays) => {
@@ -74,16 +69,10 @@ const Table = () => {
 
   return (
     <div
-      className="p-8 min-w-[1000px] items-center text-center"
+      className="p-8 min-w-[1000px] items-center text-center "
       style={{ direction: "rtl" }}
     >
       <Level updateLevel={updateLevelData} />
-      {/* <button
-        onClick={handelLoad}
-        className="bg-blue-600 col-span-2 w-96 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg  transition duration-200 ease-in-out"
-      >
-        عرض الجدول
-      </button> */}
       <TableData Day={Day} />
     </div>
   );

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Router = createBrowserRouter([
   { path: "/table", element: <Table /> },
+  { path: "/", element: <Table /> },
   { path: "/Dashboard", element: <Dashboard /> },
 ]);
 
