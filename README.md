@@ -1,8 +1,23 @@
-# React + Vite
+# University Timetable Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic and editable University Timetable website designed to simplify the management of academic schedules. This application allows admins to easily create, modify, and view timetables in real time. Built with responsive design principles to ensure accessibility on all devices.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create and modify academic schedules.
+- View timetables in real time.
+- Responsive design for accessibility on all devices.
+- User-friendly interface for easy navigation.
+
+## Tech Stack
+
+- **Frontend:** React.js
+- **Styling:** Tailwind CSS
+- **Backend:** Firebase
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/university-timetable.git
+   ```
